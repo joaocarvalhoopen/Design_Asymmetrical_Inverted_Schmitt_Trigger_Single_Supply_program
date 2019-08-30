@@ -80,7 +80,7 @@ def expansion_of_E24_values_for_range(E24_values, scales):
             values_list.append(value)
     return values_list
 
-def calc_voltage_threadholds_for_circuit(VCC, R1, R2, R3):
+def calc_voltage_thresholds_for_circuit(VCC, R1, R2, R3):
     V_low_threshold  = 0.0
     V_high_threshold = 0.0
 
@@ -110,7 +110,7 @@ def full_search_of_resister_values(values_list, VCC, V_low_threshold_target, V_h
     for R1 in values_list:
         for R2 in values_list:
             for R3 in values_list:
-                res = calc_voltage_threadholds_for_circuit(VCC, R1, R2, R3)
+                res = calc_voltage_thresholds_for_circuit(VCC, R1, R2, R3)
                 V_low_threshold_obtained, V_high_threshold_obtained = res
                 error = calc_square_distance_error(V_low_threshold_target, V_high_threshold_target,
                                                    V_low_threshold_obtained, V_high_threshold_obtained)
@@ -149,7 +149,7 @@ def worst_tolerance_resistor_analysis(VCC, V_low_threshold_target, V_high_thresh
     for R1 in R1_values:
         for R2 in R2_values:
             for R3 in R3_values:
-                res = calc_voltage_threadholds_for_circuit(VCC, R1, R2, R3)
+                res = calc_voltage_thresholds_for_circuit(VCC, R1, R2, R3)
                 V_low_threshold_obtained, V_high_threshold_obtained = res
                 error = calc_absolute_distance_error(V_low_threshold_target, V_high_threshold_target,
                                                      V_low_threshold_obtained, V_high_threshold_obtained)
